@@ -78,6 +78,17 @@ namespace Newme.Catalog.Application.Services
             return await _mediator.Send(new GetCatalogQuery());
         }
 
+        public async Task<GetCatalogViewModel> GetCatalogByFilter(GetCatalogByFilterInputModel inputModel)
+        {
+            return await _mediator.Send(new GetCatalogByFilterQuery(
+                inputModel.Categories,
+                inputModel.Colors,
+                inputModel.Sizes,
+                inputModel.Genders,
+                inputModel.MinPrice,
+                inputModel.MaxPrice));
+        }
+
         public async Task<ValidationResult> RegisterByCodeInputModel(RegisterNewProductDifferantialByCodeInputModel inputModel)
         {
             var productCommand = _mapper.Map<RegisterNewProductByCodeCommand>(inputModel);

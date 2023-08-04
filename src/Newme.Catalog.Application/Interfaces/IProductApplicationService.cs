@@ -9,6 +9,7 @@ namespace Newme.Catalog.Application.Interface
         Task<IEnumerable<ReadProductViewModel>> GetAllAsync();
         Task<GetCatalogViewModel> GetCatalog();
         Task<GetCatalogViewModel> GetByNameAsync(string name);
+        Task<GetCatalogViewModel> GetCatalogByFilter(GetCatalogByFilterInputModel inputModel);
         Task<ValidationResult> RegisterAsync(RegisterNewProductInputModel inputModel);
         Task<ValidationResult> DeactivateAsync(Guid id);
         Task<ValidationResult> RemoveAsync(Guid id);

@@ -13,9 +13,9 @@ namespace Newme.Catalog.Application.Queries
             _repositoryQuery = repositoryQuery;
         }
 
-        public async Task<GetCatalogViewModel> Handle(SearchByNameQuery command, CancellationToken cancellationToken)
+        public async Task<GetCatalogViewModel> Handle(SearchByNameQuery query, CancellationToken cancellationToken)
         {
-            var products = await _repositoryQuery.SearchByNameAsync(command.Name);
+            var products = await _repositoryQuery.SearchByNameAsync(query.Name);
             
             return GetCatalogViewModelFactory.Build(
                 products

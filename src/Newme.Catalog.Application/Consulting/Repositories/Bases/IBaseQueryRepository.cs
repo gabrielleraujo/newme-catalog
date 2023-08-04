@@ -10,6 +10,7 @@ namespace Newme.Catalog.Application.Consulting.Repositories
         Task<bool> ExistsByIdAsync(Guid id);
         Task<IEnumerable<T>> GetAllByAsync<TValueMatch>(
             TValueMatch value, Expression<Func<T, TValueMatch>> expression);
+        Task<IList<T>> GetByFilterAsync(Expression<Func<T, bool>> expression);
         Task<bool> ExistsByAsync <TValueMatch>(
             TValueMatch value, Expression<Func<T, TValueMatch>> expression);
         Task AddAsync(T value);

@@ -13,7 +13,7 @@ namespace Newme.Catalog.Application.Queries
             _repositoryQuery = repositoryQuery;
         }
 
-        public async Task<GetCatalogViewModel> Handle(GetCatalogQuery command, CancellationToken cancellationToken)
+        public async Task<GetCatalogViewModel> Handle(GetCatalogQuery query, CancellationToken cancellationToken)
         {
             var products = await _repositoryQuery.GetAllAsync();
 

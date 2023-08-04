@@ -52,9 +52,6 @@ namespace Newme.Catalog.Application
         {
             var configuration = services.BuildServiceProvider().GetService<IConfiguration>();
             
-            // var awsKeyId = configuration!.GetValue<string>("AwsS3:KeyId");
-            // var awsKeySecret = configuration!.GetValue<string>("AwsS3:KeySecret");
-
             var awsS3Model = new AwsS3Model();
             configuration!.GetSection("AwsS3").Bind(awsS3Model);
 

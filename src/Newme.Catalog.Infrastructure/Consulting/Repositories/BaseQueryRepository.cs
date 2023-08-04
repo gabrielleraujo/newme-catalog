@@ -25,6 +25,14 @@ namespace Newme.Catalog.Infrastructure.Consulting.Repositories
             return result.SingleOrDefault();        
         }
 
+        public async Task<IList<T>> GetByFilterAsync(Expression<Func<T, bool>> expression)
+        {
+            var filter = Builders<T>.Filter
+                .Where(expression);
+
+            return await _collection.Find(filter).ToListAsync();
+        }
+
         public async Task<bool> ExistsByIdAsync(Guid id)
         {
             var result = await GetByIdAsync(id);

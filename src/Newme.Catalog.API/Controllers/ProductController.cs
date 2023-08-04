@@ -52,6 +52,16 @@ namespace Newme.Catalog.API.Controllers
             return response == null ? NotFound() : Ok(response);
         }
 
+        [HttpGet("catalog-by-filter")]
+        [ProducesResponseType(typeof(GetCatalogViewModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetCatalogByFilter([FromQuery] GetCatalogByFilterInputModel inputModel)
+        {
+            var response = await _productApplicationService.GetCatalogByFilter(inputModel);
+            return response == null ? NotFound() : Ok(response);
+        }
+
         [HttpGet]
         [ProducesResponseType(typeof(GetCatalogViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
